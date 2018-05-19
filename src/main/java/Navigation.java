@@ -5,4 +5,7 @@ public class Navigation {
         BrowserType.browser.get("https://idemo.bspb.ru");
         return PageFactory.initElements(BrowserType.browser, BankLoginPage.class);
     }
+    public void loginUserTest(){
+
+    }
 }

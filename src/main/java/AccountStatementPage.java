@@ -8,20 +8,10 @@ public class AccountStatementPage {
     WebElement account;
     @FindBy(id="statements-statement")
     WebElement statement;
-    @FindBy(id="closing-balance-row")
-    WebElement balance;
-    @FindBy(xpath = "//tr[@id='closing-balance-row']/th[2]")
-    WebElement amountResult;
 
-    public AccountStatementPage accountStatement (WebElement account, WebElement statement) {
+    public PositiveBalancePage accountStatement() {
         Actions actions = new Actions(BrowserType.browser);
         actions.moveToElement(account).click(statement).build().perform();
-        return PageFactory.initElements(BrowserType.browser, CurrencyExchangePage.class);
-    }
-    public boolean isBalancePositive(){
-        String []ArrResult = amountResult.getText().replaceAll(" ", "").split("\\.");
-        String result  = ArrResult[0];
-        int resultOfBalance = Integer.parseInt(result);
-        return  (resultOfBalance > 0);
+        return PageFactory.initElements(BrowserType.browser,PositiveBalancePage.class);
     }
 }
